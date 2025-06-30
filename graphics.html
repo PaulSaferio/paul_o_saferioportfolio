@@ -421,77 +421,6 @@
             line-height: 1.6;
         }
 
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-        }
-
-        .contact-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-form {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .form-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            font-size: 1rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .contact-form textarea {
-            grid-column: 1 / -1;
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            grid-column: 1 / -1;
-            padding: 1rem;
-            background: var(--accent);
-            color: var(--white);
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
-        }
-
         /* Footer */
         footer {
             background: var(--dark);
@@ -618,7 +547,6 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
                 <span></span>
@@ -767,25 +695,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title fade-in">Let's Create Something Amazing</h2>
-                                
-                <form class="contact-form fade-in">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <input type="text" placeholder="Project Title">
-                    <textarea placeholder="Talk to me..." required></textarea>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -855,40 +764,6 @@
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
             this.classList.toggle('active');
         });
-
-        // Form submission
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Form validation
-                const inputs = this.querySelectorAll('input[required], textarea[required]');
-                let isValid = true;
-                
-                inputs.forEach(input => {
-                    if (!input.value.trim()) {
-                        isValid = false;
-                        input.style.borderLeft = '4px solid #ef4444';
-                        setTimeout(() => {
-                            input.style.borderLeft = 'none';
-                        }, 3000);
-                    }
-                });
-                
-                if (isValid) {
-                    const submitBtn = this.querySelector('.submit-btn');
-                    submitBtn.textContent = 'Message Sent!';
-                    submitBtn.style.background = '#10b981';
-                    
-                    setTimeout(() => {
-                        submitBtn.textContent = 'Send Message';
-                        submitBtn.style.background = 'var(--accent)';
-                        this.reset();
-                    }, 3000);
-                }
-            });
-        }
 
         // Portfolio item hover effect
         document.querySelectorAll('.portfolio-item').forEach(item => {
