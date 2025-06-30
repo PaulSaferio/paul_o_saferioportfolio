@@ -11,16 +11,18 @@
             padding: 0;
             box-sizing: border-box;
         }
-        #pot{
+        #pot {
             display: none;
         }
         section {
             padding: 6rem 0;
-            scroll-margin-top: 80px; /* Height of your navbar */
+            scroll-margin-top: 80px;
+            position: relative;
         }
+
         :root {
-            --primary-color: #6366f1;
-            --secondary-color: #8b5cf6;
+            --primary-color: #10b981;
+            --secondary-color: #059669;
             --accent-color: #06b6d4;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
@@ -37,7 +39,7 @@
         }
 
         body {
-           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             overflow-x: hidden;
@@ -45,19 +47,17 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-        /* Typography */
+
         h1, h2, h3, h4 {
             line-height: 1.2;
             font-weight: 700;
         }
 
-        /* Navigation */
         nav {
-           position: fixed;
+            position: fixed;
             top: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
@@ -139,17 +139,15 @@
             color: var(--text-primary);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #34d399 0%, #059669 100%);
             position: relative;
             overflow: hidden;
             padding-top: 80px;
-            min-height: calc(100vh - 80px); /* Subtract navbar height */
-            padding-top: 80px; /* Navbar height */
+            z-index: 1;
         }
 
         .hero::before {
@@ -164,7 +162,7 @@
         }
 
         .hero-content {
-           max-width: 1200px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
             text-align: center;
@@ -249,11 +247,6 @@
             transform: translateY(-3px);
         }
 
-        /* Sections */
-        section {
-            padding: 6rem 0;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -284,9 +277,10 @@
             border-radius: 2px;
         }
 
-        /* About Section */
         .about {
             background: var(--bg-secondary);
+            position: relative;
+            z-index: 2;
         }
 
         .about-content {
@@ -361,7 +355,6 @@
             transform: translateY(10px);
         }
 
-        /* Projects Section */
         .projects {
             position: relative;
         }
@@ -398,15 +391,13 @@
         }
 
         .project-image::before {
-            
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8))
-                
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(5, 150, 105, 0.8));
         }
         .project-icon {
             font-size: 4rem;
@@ -466,7 +457,6 @@
             padding: 0.5rem 1rem;
         }
 
-        /* Contact Section */
         .contact {
             background: var(--bg-dark);
             color: white;
@@ -489,7 +479,7 @@
         }
         .contact .section-title {
             color: white;
-            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            background: linear-gradient(135deg, #06b6d4, #10b981);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -567,7 +557,6 @@
             box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
         }
 
-        /* Footer */
         footer {
             background: #000;
             color: white;
@@ -636,7 +625,6 @@
             box-shadow: var(--shadow-xl);
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -659,7 +647,6 @@
             transform: translateY(0);
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -684,7 +671,6 @@
             }
         }
 
-        /* Floating elements */
         .floating {
             animation: float 6s ease-in-out infinite;
         }
@@ -730,15 +716,13 @@
 
     <!-- About Section -->
     <section id="about" class="about" style="background:aliceblue;">
-        <div class="container" style="background:aliceblue;" >
+        <div class="container" style="background:aliceblue;">
             <h2 class="section-title fade-in">About Me</h2>
             <div class="about-content">
                 <div class="about-image fade-in">
                     <div style="width: 100%; height: 300px; background: var(--gradient); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
-                       
-                        <img src='paul.jpeg'style= "height:auto; max-width: 100%; object-fit: contain;" >
+                        <img src='paul.jpeg' style="height:auto; max-width: 100%; object-fit: contain;">
                     </div>
-                    
                 </div>
                 <div class="about-text fade-in">
                     <h3>Passionate Developer & Creative Thinker</h3>
@@ -766,7 +750,7 @@
             <h2 class="section-title fade-in">Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card fade-in floating">
-                    <div class="project-image"><img src='code.jpg'style= "height:auto; max-width: 100%; object-fit: contain;" ></div>
+                    <div class="project-image"><img src='code.jpg' style="height:auto; max-width: 100%; object-fit: contain;"></div>
                     <div class="project-content">
                         <h3>Websites</h3>
                         <p>Full-featured websites built on HTML PHP and JavaScript and react. Features include user authentication, and admin dashboard.</p>
@@ -777,51 +761,50 @@
                     </div>
                 </div>
                 <div class="project-card fade-in floating" style="animation-delay: 2s;">
-                    <div class="project-image"><img src='graph.jpg'style= "height:auto; max-width: 100%; object-fit: contain;" ></div>
+                    <div class="project-image"><img src='graph.jpg' style="height:auto; max-width: 100%; object-fit: contain;"></div>
                     <div class="project-content">
                         <h3>My world of Graphics Design</h3>
                         <p>An exibit of what I'm capable of.</p>
                         <div class="project-links">
                             <a href="graphics.html" class="btn-primary">Let me take you</a>
-                            
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
+
     <center>
     <div id="pot" style="width: 100%">
-        
-            <table style="width: 100%">
-                <tr>
-                    <th>Business Cards</th>
-                    <td>
-                       <img src="sig1.jpeg" style="width:30%;height: relative;" > 
-                    </td>
-                </tr>
-                <tr>
-                    <th>Posters</th>
-                    <td>
-                       <img src="poster.jpg" style="width:30%;height: relative;"> 
-                    </td>
-                </tr>
-                <tr>
-                    <th>Email Signatures</th>
-                    <td>
-                       <img src="sig.jpg" style="width:30%;height: relative;"> 
-                    </td>
-                </tr>
-                <tr>
-                    <th>Logo design</th>
-                    <td>
-                       <img src="log.jpeg" style="width:30%;height: relative;"> 
-                    </td>
-                </tr>
-            </table>        
+        <table style="width: 100%">
+            <tr>
+                <th>Business Cards</th>
+                <td>
+                   <img src="sig1.jpeg" style="width:30%;height: relative;"> 
+                </td>
+            </tr>
+            <tr>
+                <th>Posters</th>
+                <td>
+                   <img src="poster.jpg" style="width:30%;height: relative;"> 
+                </td>
+            </tr>
+            <tr>
+                <th>Email Signatures</th>
+                <td>
+                   <img src="sig.jpg" style="width:30%;height: relative;"> 
+                </td>
+            </tr>
+            <tr>
+                <th>Logo design</th>
+                <td>
+                   <img src="log.jpeg" style="width:30%;height: relative;"> 
+                </td>
+            </tr>
+        </table>        
     </div>
     </center>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -871,24 +854,19 @@
     </section>
 
     <!-- Footer -->
-    
     <footer>
         <div class="footer-content">
             <a href="#home" class="back-to-top">↑</a>
             <div class="social-links">
                 <a href="https://github.com/PaulSaferio">
                     <span>GitHub</span>
-                    
                 </a>
                 <a href="https://www.linkedin.com/in/paul-owaki-30198b105">
                     <span>LinkedIn</span>
-                    
                 </a>
                 <a href="https://x.com/PSaferio">
                     <span>Twitter</span>
-                    
                 </a>
-                
             </div>
             <p>&copy; 2025 Paul Owaki Saferio. All rights reserved. </p>
         </div>
@@ -900,6 +878,7 @@
         function oneshshow() {
           onesh.style.display = 'block';
         }
+        
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -992,21 +971,6 @@
                 hero.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
         });
-
-        // Dynamic typing effect (optional enhancement)
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
 
         // Add some dynamic content loading
         window.addEventListener('load', function() {
