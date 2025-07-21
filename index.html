@@ -278,6 +278,60 @@
             border-radius: 2px;
         }
 
+          .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            padding: 2rem;
+            max-width: 90%;
+            max-height: 90%;
+            height: 100%;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+        
         .about {
             background: var(--bg-secondary);
             position: relative;
@@ -292,11 +346,14 @@
         }
 
         .about-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+       
         .about-image::before {
             content: '';
             position: absolute;
@@ -720,8 +777,8 @@
         <div class="container" style="background:aliceblue;">
             <h2 class="section-title fade-in">About Me</h2>
             <div class="about-content">
-                <div class="about-image fade-in">
-                    <div style="width: 100%; height: 300px; background: var(--gradient); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+                <div class="about-image fade-in" onclick="openImageModal('prof.png')">
+                    <div style="width: 100%; height: 300px; background: linear-gradient(135deg, #2dd4bf, #0ea5e9); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
                         <img src='prof.png' style="height:auto; max-width: 100%; object-fit: contain;">
                     </div>
                 </div>
@@ -744,6 +801,14 @@
         </div>
     </section>
 
+     <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeImageModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImg" class="modal-image" src="" alt="Enlarged Profile Photo">
+        </div>
+    </div>
+    
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
@@ -858,6 +923,39 @@
         function oneshshow() {
           onesh.style.display = 'block';
         }
+        
+        // Image Modal Functionality
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+            
+            // Disable body scrolling when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = "none";
+            // Re-enable body scrolling
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the image
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeImageModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
+            }
+        });
         
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
